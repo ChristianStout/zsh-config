@@ -40,6 +40,7 @@ HISTFILE=$ZSH_CUSTOM/zsh_history
 HISTZISE=10000
 SAVEHIST=10000
 setopt appendhistory
+touch $HISTFILE
 
 # Make ls colorful :)
 if [ -x /usr/bin/dircolors ]; then
