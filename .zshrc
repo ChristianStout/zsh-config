@@ -9,6 +9,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# My custom varibles
+export ZSH_CUSTOM=~/.config/zsh
+export PLUGINS_DIR=~/.config/zsh/plugins
+export PROJ_DIR=~/Documents/projects/
+
+# Make pushd quiet
+setopt PUSHDSILENT
+
 # My aliases
 alias la="ls -a"
 alias ll="ls -l"
@@ -16,13 +24,16 @@ alias lla="ls -la"
 alias v="nvim"
 alias v.="nvim ."
 alias notes="pushd ~/Documents/notes"
-alias proj="pushd ~/Documents/projects"
+# alias proj="echo $($ZSH_CUSTOM/proj.sh $1) | pushd"
 alias repos="pushd ~/Documents/repos"
 alias cd="pushd"
+alias :q="exit"
 
-# My custom varibles
-export ZSH_CUSTOM=~/.config/zsh
-export PLUGINS_DIR=~/.config/zsh/plugins
+# Custom scripts
+alias todo=$ZSH_CUSTOM/todo.sh
+proj() {
+  pushd $($ZSH_CUSTOM/proj.sh $1)
+}
 
 # Set zsh history file
 HISTFILE=$ZSH_CUSTOM/zsh_history
@@ -57,12 +68,6 @@ bindkey '^[[B' history-substring-search-down
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Make pushd quiet
-setopt PUSHDSILENT
-
 export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 export PATH=/home/lambda/Documents/repos/odin:$PATH
-
-# Custom scitps
-alias todo=$ZSH_CUSTOM/todo.sh
 
