@@ -3,7 +3,7 @@
 # confirmations, etc.) must go above this block; everything else may go below.
 
 # Fetch sys info
-neofetch
+fastfetch --config screenfetch.jsonc --logo arch_small
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -15,16 +15,14 @@ alias ll="ls -l"
 alias lla="ls -la"
 alias v="nvim"
 alias v.="nvim ."
-alias gaa="git add ."
-alias gca="git commit -m"
 alias notes="pushd ~/Documents/notes"
 alias proj="pushd ~/Documents/projects"
 alias repos="pushd ~/Documents/repos"
 alias cd="pushd"
 
 # My custom varibles
-export ZSH_CUSTOM=~/.dotfiles/zsh
-export PLUGINS_DIR=~/.dotfiles/zsh/plugins
+export ZSH_CUSTOM=~/.config/zsh
+export PLUGINS_DIR=~/.config/zsh/plugins
 
 # Set zsh history file
 HISTFILE=$ZSH_CUSTOM/zsh_history
@@ -64,4 +62,7 @@ setopt PUSHDSILENT
 
 export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 export PATH=/home/lambda/Documents/repos/odin:$PATH
+
+# Custom scitps
+alias todo=$ZSH_CUSTOM/todo.sh
 
