@@ -31,7 +31,7 @@ Before use, ake sure the following packages are in your `$PATH`
 - `nvim`
 - `/usr/bin/dircolors` (Optional, and very likely already exists)
 
-0. Remove any previous config
+## 0. Remove any previous config
 > [!WARNING]
 > This will destroy any previous config. Please back up before doing this.
 ```zsh
@@ -39,13 +39,13 @@ rm -rf ~/.config/zsh/
 rm -f ~/.zshrc
 ```
 
-1. Clone repo into `.config/zsh` and create a symbolic link to `~/.zshrc`
+## 1. Clone repo into `.config/zsh` and create a symbolic link to `~/.zshrc`
 ```zsh
 git clone https://github.com/ChristianStout/zsh-config.git ~/.config/zsh
 ln -s ~/.config/zsh/.zshrc ~/.zshrc
 ```
 
-2. Run setup script
+## 2. Run setup script
 This is will install all plugins, and run the `powerlevel10k` theme setup
 ```zsh
 cd ~/.config/zsh/
