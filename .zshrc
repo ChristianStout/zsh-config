@@ -33,6 +33,9 @@ alias :q="exit"
 alias todo=$ZSH_CUSTOM/todo.sh
 proj() {
   pushd $($ZSH_CUSTOM/proj.sh $1)
+  if [[ -d ".git"]]; then
+      git fetch
+  fi
 }
 
 # Set zsh history file
