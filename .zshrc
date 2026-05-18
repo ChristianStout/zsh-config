@@ -3,7 +3,8 @@
 # confirmations, etc.) must go above this block; everything else may go below.
 
 # Fetch sys info
-fastfetch --config screenfetch.jsonc --logo arch_small
+# fastfetch --config screenfetch.jsonc --logo arch_small
+fastfetch --config .config/fastfetch/config.jsonc --logo debian-linux_small --logo-padding-top 8 --logo-padding-left 3 --title-color-user cyan --title-color-host yellow --title-color-at red --color-separator blue --color-keys yellow
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -13,6 +14,8 @@ fi
 export ZSH_CUSTOM=~/.config/zsh
 export PLUGINS_DIR=~/.config/zsh/plugins
 export PROJ_DIR=~/Documents/projects/
+export FOCUS_SOUNDS_DIR=~/Media/2TBStorage/FocusSounds/
+export MY_BIN_DIR=~/.mybin/
 
 # Make pushd quiet
 setopt PUSHDSILENT
@@ -28,14 +31,19 @@ alias notes="pushd ~/Documents/notes"
 alias repos="pushd ~/Documents/repos"
 alias cd="pushd"
 alias :q="exit"
+alias focus="nohup mpv $FOCUS_SOUNDS_DIR/* --shuffle &"
+alias sudo="sudo "
+
+# Nala
+alias apt="\nala"
+alias apt-get="\nala"
+export FORCE_COLOR=true
 
 # Custom scripts
 alias todo=$ZSH_CUSTOM/todo.sh
 proj() {
   pushd $($ZSH_CUSTOM/proj.sh $1)
-  if [[ -d ".git"]]; then
-      git fetch
-  fi
+  git fetch
 }
 
 # Set zsh history file
@@ -57,7 +65,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # Source Rust
-source "$HOME/.cargo/env"
+# source "$HOME/.cargo/env"
 
 # My plugins
 source $PLUGINS_DIR/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -74,4 +82,5 @@ bindkey '^[[B' history-substring-search-down
 
 export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 export PATH=/home/lambda/Documents/repos/odin:$PATH
+export PATH=$PATH:$MY_BIN_DIR
 
